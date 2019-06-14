@@ -9,7 +9,6 @@ interface AppConfig {
 export = (app: Application) => {
   app.on('pull_request.opened', async (context) => {
     const config: AppConfig = await context.config<AppConfig>('reviewers_assign.yml', { reviewers: [] })
-    console.log
 
     const owner = context.payload.pull_request.user.login
     let filteredReviewers = config.reviewers.filter((reviewer: string): boolean => {
